@@ -13,6 +13,8 @@
 		8E73A8B61E25C4F9008EC9F9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E73A8B41E25C4F9008EC9F9 /* Main.storyboard */; };
 		8E73A8B81E25C4F9008EC9F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E73A8B71E25C4F9008EC9F9 /* Assets.xcassets */; };
 		8E73A8BB1E25C4F9008EC9F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E73A8B91E25C4F9008EC9F9 /* LaunchScreen.storyboard */; };
+		8E73A8C51E25C52A008EC9F9 /* KeychainManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E73A8C41E25C52A008EC9F9 /* KeychainManager.m */; };
+		8E73A8CB1E25D594008EC9F9 /* UIDevice+UniqueIdentifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E73A8CA1E25D594008EC9F9 /* UIDevice+UniqueIdentifier.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,11 @@
 		8E73A8B71E25C4F9008EC9F9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8E73A8BA1E25C4F9008EC9F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8E73A8BC1E25C4F9008EC9F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8E73A8C31E25C52A008EC9F9 /* KeychainManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainManager.h; sourceTree = "<group>"; };
+		8E73A8C41E25C52A008EC9F9 /* KeychainManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainManager.m; sourceTree = "<group>"; };
+		8E73A8C71E25CCF5008EC9F9 /* KeychainManager.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KeychainManager.entitlements; sourceTree = "<group>"; };
+		8E73A8C91E25D594008EC9F9 /* UIDevice+UniqueIdentifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+UniqueIdentifier.h"; sourceTree = "<group>"; };
+		8E73A8CA1E25D594008EC9F9 /* UIDevice+UniqueIdentifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+UniqueIdentifier.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +65,8 @@
 		8E73A8AA1E25C4F9008EC9F9 /* KeychainManager */ = {
 			isa = PBXGroup;
 			children = (
+				8E73A8C71E25CCF5008EC9F9 /* KeychainManager.entitlements */,
+				8E73A8C21E25C50B008EC9F9 /* lib */,
 				8E73A8AE1E25C4F9008EC9F9 /* AppDelegate.h */,
 				8E73A8AF1E25C4F9008EC9F9 /* AppDelegate.m */,
 				8E73A8B11E25C4F9008EC9F9 /* ViewController.h */,
@@ -77,6 +86,17 @@
 				8E73A8AC1E25C4F9008EC9F9 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8E73A8C21E25C50B008EC9F9 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				8E73A8C31E25C52A008EC9F9 /* KeychainManager.h */,
+				8E73A8C41E25C52A008EC9F9 /* KeychainManager.m */,
+				8E73A8C91E25D594008EC9F9 /* UIDevice+UniqueIdentifier.h */,
+				8E73A8CA1E25D594008EC9F9 /* UIDevice+UniqueIdentifier.m */,
+			);
+			path = lib;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -110,7 +130,13 @@
 				TargetAttributes = {
 					8E73A8A71E25C4F9008EC9F9 = {
 						CreatedOnToolsVersion = 8.2.1;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = 65YG889FGF;
+						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -152,7 +178,9 @@
 			files = (
 				8E73A8B31E25C4F9008EC9F9 /* ViewController.m in Sources */,
 				8E73A8B01E25C4F9008EC9F9 /* AppDelegate.m in Sources */,
+				8E73A8CB1E25D594008EC9F9 /* UIDevice+UniqueIdentifier.m in Sources */,
 				8E73A8AD1E25C4F9008EC9F9 /* main.m in Sources */,
+				8E73A8C51E25C52A008EC9F9 /* KeychainManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,10 +300,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = KeychainManager/KeychainManager.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: ShangHai P&C Information Technology Co., Ltd";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = 65YG889FGF;
 				INFOPLIST_FILE = KeychainManager/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yitong.KeychainManager;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yitong.developer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "3a3b0f3f-1893-4a3b-935e-8d141e5b9ac4";
+				PROVISIONING_PROFILE_SPECIFIER = YTEnterpriseDist;
 			};
 			name = Debug;
 		};
@@ -283,10 +317,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = KeychainManager/KeychainManager.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: ShangHai P&C Information Technology Co., Ltd";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = 65YG889FGF;
 				INFOPLIST_FILE = KeychainManager/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yitong.KeychainManager;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yitong.developer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "3a3b0f3f-1893-4a3b-935e-8d141e5b9ac4";
+				PROVISIONING_PROFILE_SPECIFIER = YTEnterpriseDist;
 			};
 			name = Release;
 		};

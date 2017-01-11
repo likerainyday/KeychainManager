@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "UIDevice+UniqueIdentifier.h"
 
 @interface ViewController ()
 
@@ -17,8 +18,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    NSLog(@"设备唯一标识: %@",[UIDevice uniqueIdentifier]);
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
